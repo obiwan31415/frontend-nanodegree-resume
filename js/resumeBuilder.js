@@ -1,9 +1,7 @@
 /*
-This is empty on purpose! Your code to build the resume will go here.
- */
+Resume builder script file
+*/
  
-var name = "Rafał Gawlik";
-var role = "Web Developer";
 var bio = {
 	"name"		: "Rafał Gawlik",
  	"role"		: "Web Developer",
@@ -18,33 +16,52 @@ var bio = {
 	"bioPic"	: "images/cat.jpg"
 };
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedHTMLwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-var formattedBioPic = HTMLprojectImage.replace("%data%", bio.bioPic);
-
-var formattedContactInfo = [];
-formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
-formattedContactInfo.push(HTMLmobile.replace("%data%", bio.contacts.mobile));
-formattedContactInfo.push(HTMLgithub.replace("%data%", bio.contacts.github));
-formattedContactInfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
-
-var formattedHTMLskills = [];
-
-bio.skills.forEach(function(element) {
-	formattedHTMLskills.push(HTMLskills.replace("%data%", element));
-});
- 
-for(i in formattedContactInfo) {
-	$("#topContacts").append(formattedContactInfo[i]);
+var work = {
+	"jobs": [
+		{
+			"position": "Helpdesk Manager",
+			"employer": "AZ",
+			"dates": "2015-current"
+		},
+		{
+			"position": "frontend developer",
+			"employer": "IPPT",
+			"dates": "2013-2014"
+		}
+	]
 };
 
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#header").append(formattedBioPic);
-$("#header").append(formattedHTMLwelcomeMsg);
+var projects = {
+	"projects": [
+		{
+			"title": "Biocentrum Ochota - GRAFEN",
+			"dates": "2014",
+			"description": "Joomla web page",
+			"images": ['images/biocentrum.jpg']
+		},
+		{
+			"title": "Udacity Portfolio",
+			"dates": "2015",
+			"description": "Portfolio to show off my amazing work while working on the Udacity Front-end Nanodegree.",
+			"images": ['images/udacity-portfolio-site_small.jpg']
+		}
+	]
+};
 
-$("#header").append(HTMLskillsStart);
-formattedHTMLskills.forEach(function(element) {
-	$("#skills").append(element);
-});
+var education = {
+	"schools": [
+		{
+			"name": "UW",
+			"city": "Warsaw",
+			"degree": "Masters",
+			"major": "Mathematics"
+		}],
+	"onlineCourses": [
+		{
+			"title": "Front-end Web Developer Nanodegree",
+			"school": "Udacity",
+			"date": "2018",
+			"url": "www.udacity.com"
+		}
+	]
+};
