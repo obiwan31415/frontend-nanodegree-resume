@@ -19,14 +19,18 @@ var bio = {
 var work = {
 	"jobs": [
 		{
-			"position": "Helpdesk Manager",
 			"employer": "AZ",
-			"dates": "2015-current"
+			"position": "Helpdesk Manager",
+			"dates": "2015-in progress",
+			"location": "Warsaw",
+			"description": "Manage onsite support team"
 		},
 		{
-			"position": "frontend developer",
 			"employer": "IPPT",
-			"dates": "2013-2014"
+			"position": "Frontend Developer",
+			"dates": "2013-2014",
+			"location": "Warsaw",
+			"description": "Manage license servers, maintain Matlab Cluster"
 		}
 	]
 };
@@ -65,3 +69,32 @@ var education = {
 		}
 	]
 };
+
+$("#header").append(HTMLheaderName.replace("%data%", bio.name));
+$("#header").append(HTMLheaderRole.replace("%data%", bio.role));
+
+if (bio.skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
+	bio.skills.forEach(function(skill) {
+		$("#skills").append(HTMLskills.replace("%data%", skill));
+	})
+}
+
+
+	
+function displayWork() {
+	work.jobs.forEach(function(job) {
+	$("#workExperience").append(HTMLworkStart);
+	var formattedWorkEmployerTitle = 
+		HTMLworkEmployer.replace("%data%", job.employer) +
+		HTMLworkTitle.replace("%data%", job.position);
+	$(".work-entry:last").append(formattedWorkEmployerTitle);
+	$(".work-entry:last").append(HTMLworkDates.replace("%data%", job.dates));
+	$(".work-entry:last").append(HTMLworkDescription.replace("%data%", job.description));
+
+	//$(".work-entry:last").append(HTMLworkDates.replace("%data%", job.dates));
+	console.log(job.position);
+	});
+}
+
+displayWork()
