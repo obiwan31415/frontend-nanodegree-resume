@@ -36,13 +36,13 @@ var projects = {
 		{
 			"title": "Biocentrum Ochota - GRAFEN",
 			"dates": "2014",
-			"description": "Joomla web page",
+			"description": "User manual for Grafen cluster.",
 			"images": ['images/biocentrum.jpg']
 		},
 		{
-			"title": "Udacity Portfolio",
-			"dates": "2015",
-			"description": "Portfolio to show off my amazing work while working on the Udacity Front-end Nanodegree.",
+			"title": "Frontend developer resume",
+			"dates": "2018",
+			"description": "Udacity Front-end Nanodegree project.",
 			"images": ['images/udacity-portfolio-site_small.jpg']
 		}
 	]
