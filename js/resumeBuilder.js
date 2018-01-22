@@ -22,14 +22,14 @@ var work = {
 			"employer": "AZ",
 			"position": "Helpdesk Manager",
 			"dates": "2015-in progress",
-			"location": "Warsaw",
+			"location": "Warsaw1",
 			"description": "Manage onsite support team"
 		},
 		{
 			"employer": "IPPT",
 			"position": "Frontend Developer",
 			"dates": "2013-2014",
-			"location": "Warsaw",
+			"location": "Warsaw2",
 			"description": "Manage license servers, maintain Matlab Cluster"
 		}
 	]
@@ -91,10 +91,23 @@ function displayWork() {
 	$(".work-entry:last").append(formattedWorkEmployerTitle);
 	$(".work-entry:last").append(HTMLworkDates.replace("%data%", job.dates));
 	$(".work-entry:last").append(HTMLworkDescription.replace("%data%", job.description));
-
-	//$(".work-entry:last").append(HTMLworkDates.replace("%data%", job.dates));
 	console.log(job.position);
 	});
 }
 
-displayWork()
+displayWork();
+
+$(document).click(function(loc) {
+  //console.log("X " + loc.pageX + " : Y " + loc.pageY);
+  logClicks(loc.pageX, loc.pageY);
+});
+
+function locationizer(work_obj) {
+    var locationArray = [];
+    work_obj.jobs.forEach(function(job){
+        locationArray.push(job.location);
+    });
+    return locationArray;
+}
+
+console.log(locationizer(work));
