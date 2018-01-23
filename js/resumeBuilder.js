@@ -41,13 +41,13 @@ var projects = {
 			"title": "Biocentrum Ochota - GRAFEN",
 			"dates": "2014",
 			"description": "User manual for Grafen cluster.",
-			"images": ['images/biocentrum.jpg']
+			"images": ['images/biocentrum.png']
 		},
 		{
 			"title": "Frontend developer resume",
 			"dates": "2018",
 			"description": "Udacity Front-end Nanodegree project.",
-			"images": ['images/udacity-portfolio-site_small.jpg']
+			"images": ["images/resume.png"]
 		}
 	]
 };
@@ -84,22 +84,32 @@ if (bio.skills.length > 0) {
 	
 function displayWork() {
 	work.jobs.forEach(function(job) {
-	$("#workExperience").append(HTMLworkStart);
-	var formattedWorkEmployerTitle = 
-		HTMLworkEmployer.replace("%data%", job.employer) +
-		HTMLworkTitle.replace("%data%", job.position);
-	$(".work-entry:last").append(formattedWorkEmployerTitle);
-	$(".work-entry:last").append(HTMLworkDates.replace("%data%", job.dates));
-	$(".work-entry:last").append(HTMLworkDescription.replace("%data%", job.description));
-	console.log(job.position);
+		$("#workExperience").append(HTMLworkStart);
+		var formattedWorkEmployerTitle = 
+			HTMLworkEmployer.replace("%data%", job.employer) +
+			HTMLworkTitle.replace("%data%", job.position);
+		$(".work-entry:last").append(formattedWorkEmployerTitle);
+		$(".work-entry:last").append(HTMLworkDates.replace("%data%", job.dates));
+		$(".work-entry:last").append(HTMLworkDescription.replace("%data%", job.description));
 	});
 }
 
-displayWork();
+projects.display = function() {
+	projects.projects.forEach(function(project) {
+		$("#projects").append(HTMLprojectStart);
+		$(".project-entry:last").append(HTMLprojectTitle.replace("%data%", project.title));
+		$(".project-entry:last").append(HTMLprojectDates.replace("%data%", project.dates));
+		$(".project-entry:last").append(HTMLprojectDescription.replace("%data%", project.description));
+		if (project.images.length > 0) {
+			for (image in project.images) {
+				$(".project-entry:last").append(HTMLprojectImage.replace("%data%", project.images[image]));
+			}
+		}		
+	});
+}
 
 $(document).click(function(loc) {
-  //console.log("X " + loc.pageX + " : Y " + loc.pageY);
-  logClicks(loc.pageX, loc.pageY);
+    logClicks(loc.pageX, loc.pageY);
 });
 
 function locationizer(work_obj) {
@@ -110,4 +120,16 @@ function locationizer(work_obj) {
     return locationArray;
 }
 
-console.log(locationizer(work));
+//console.log(locationizer(work));
+
+function inName() {
+	var names = bio.name.split(" ");
+	var finalName = names[0].slice(0,1).toUpperCase() 
+		+ names[0].slice(1).toLowerCase() + " " + names[1].toUpperCase();
+	return finalName;
+}
+
+displayWork();
+projects.display();
+
+//$("#main").append(internationalizeButton);
