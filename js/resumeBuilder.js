@@ -76,10 +76,13 @@ var education = {
 $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
 $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
 $("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
+
 $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
 $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
 $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
 $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+
+$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
 if (bio.skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
@@ -127,7 +130,7 @@ function locationizer(work_obj) {
     });
     return locationArray;
 }
-
+//function to localize clicks on resume page
 //console.log(locationizer(work));
 
 function inName() {
