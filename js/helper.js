@@ -70,6 +70,18 @@ The Internationalize Names challenge found in the lesson Flow Control from JavaS
 //   return finalName;
 // }
 
+$(document).click(function(loc) {
+    logClicks(loc.pageX, loc.pageY);
+});
+
+function locationizer(work_obj) {
+    var locationArray = [];
+    work_obj.jobs.forEach(function(job){
+        locationArray.push(job.location);
+    });
+    return locationArray;
+}
+
 $(document).ready(function() {
   $('button').click(function() {
     var $name = $('#name');

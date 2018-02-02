@@ -59,9 +59,9 @@ var education = {
 			"degree": "Masters",
 			"major": "Mathematics",
 			"dates": "1993-2003",
-			"city": "Warsaw"}
+			"city": "Warsaw"
 		}
-		],
+	],
 	"onlineCourses": [
 		{
 			"title": "Front-end Web Developer Nanodegree",
@@ -148,18 +148,6 @@ education.display = function() {
 		$(".education-entry:last").append(HTMLonlineDates.replace("%data%", course.dates));
 		$(".education-entry:last").append(HTMLonlineURL.replace("%data%", course.url));
 	});
-}
-
-$(document).click(function(loc) {
-    logClicks(loc.pageX, loc.pageY);
-});
-
-function locationizer(work_obj) {
-    var locationArray = [];
-    work_obj.jobs.forEach(function(job){
-        locationArray.push(job.location);
-    });
-    return locationArray;
 }
 
 bio.display();
