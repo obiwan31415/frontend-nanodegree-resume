@@ -41,7 +41,7 @@ var projects = {
 			"title": "Biocentrum Ochota - GRAFEN",
 			"dates": "2014",
 			"description": "User manual for Grafen cluster.",
-			"images": ['images/biocentrum.png']
+			"images": ['images/biocentrum.png','images/biocentrum2.png']
 		},
 		{
 			"title": "Frontend developer resume",
@@ -82,7 +82,7 @@ if (bio.skills.length > 0) {
 
 
 	
-function displayWork() {
+work.display = function (){
 	work.jobs.forEach(function(job) {
 		$("#workExperience").append(HTMLworkStart);
 		var formattedWorkEmployerTitle = 
@@ -129,7 +129,7 @@ function inName() {
 	return finalName;
 }
 
-displayWork();
+work.display();
 projects.display();
 
 //$("#main").append(internationalizeButton);
