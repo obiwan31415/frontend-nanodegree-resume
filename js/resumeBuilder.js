@@ -59,7 +59,7 @@ var education = {
 			"degree": "Masters",
 			"major": "Mathematics",
 			"dates": "1993-2003",
-			"city": "Warsaw"
+			"city": "Warsaw"}
 		}
 		],
 	"onlineCourses": [
@@ -78,27 +78,29 @@ var education = {
 	]
 };
 
-$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
-$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
-$("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
+bio.display = function () {
+	$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+	$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+	$("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
 
-$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+	$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+	$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+	$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+	$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 
-$("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-$("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-$("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-$("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+	$("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+	$("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+	$("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+	$("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 
-$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+	$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
-if (bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
-	bio.skills.forEach(function(skill) {
-		$("#skills").append(HTMLskills.replace("%data%", skill));
-	})
+	if (bio.skills.length > 0) {
+		$("#header").append(HTMLskillsStart);
+		bio.skills.forEach(function(skill) {
+			$("#skills").append(HTMLskills.replace("%data%", skill));
+		})
+	}
 }
 
 work.display = function (){
@@ -159,18 +161,11 @@ function locationizer(work_obj) {
     });
     return locationArray;
 }
-//function to localize clicks on resume page
-//console.log(locationizer(work));
 
-function inName() {
-	var names = bio.name.split(" ");
-	var finalName = names[0].slice(0,1).toUpperCase() 
-		+ names[0].slice(1).toLowerCase() + " " + names[1].toUpperCase();
-	return finalName;
-}
-
+bio.display();
 work.display();
 projects.display();
 education.display();
 
-//$("#main").append(internationalizeButton);
+$("#mapDiv").append(googleMap);
+//initializeMap();
