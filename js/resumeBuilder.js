@@ -55,23 +55,28 @@ var projects = {
 var education = {
 	"schools": [
 		{
-			"name": "UW",
-			"city": "Warsaw",
+			"name": "Warsaw University",
 			"degree": "Masters",
-			"major": "Mathematics"
-		}],
+			"major": "Mathematics",
+			"dates": "1993-2003",
+			"city": "Warsaw"
+		}
+		],
 	"onlineCourses": [
 		{
 			"title": "Front-end Web Developer Nanodegree",
 			"school": "Udacity",
-			"date": "2018",
+			"dates": "January 2018",
 			"url": "www.udacity.com"
+		},
+		{
+			"title": "HTML Fundamentals",
+			"school": "SoloLearn",
+			"dates": "January 2018",
+			"url": "www.sololearn.com"
 		}
 	]
 };
-
-
-
 
 $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
 $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
@@ -91,8 +96,6 @@ if (bio.skills.length > 0) {
 	})
 }
 
-
-	
 work.display = function (){
 	work.jobs.forEach(function(job) {
 		$("#workExperience").append(HTMLworkStart);
@@ -119,6 +122,27 @@ projects.display = function() {
 	});
 }
 
+education.display = function() {
+	education.schools.forEach(function(school) {
+		$("#education").append(HTMLschoolStart);
+		$(".education-entry:last").append(
+			HTMLschoolName.replace("%data%", school.name) + 
+			HTMLschoolDegree.replace("%data%", school.degree));
+		$(".education-entry:last").append(HTMLschoolDates.replace("%data%", school.dates));
+		$(".education-entry:last").append(HTMLschoolMajor.replace("%data%", school.major));
+		$(".education-entry:last").append(HTMLschoolLocation.replace("%data%", school.city));
+	});
+	$("#education").append(HTMLonlineClasses);
+	education.onlineCourses.forEach(function(course) {
+		$("#education").append(HTMLschoolStart);
+		$(".education-entry:last").append(
+			HTMLonlineTitle.replace("%data%", course.title) + 
+			HTMLonlineSchool.replace("%data%", course.school));
+		$(".education-entry:last").append(HTMLonlineDates.replace("%data%", course.dates));
+		$(".education-entry:last").append(HTMLonlineURL.replace("%data%", course.url));
+	});
+}
+
 $(document).click(function(loc) {
     logClicks(loc.pageX, loc.pageY);
 });
@@ -142,5 +166,6 @@ function inName() {
 
 work.display();
 projects.display();
+education.display();
 
 //$("#main").append(internationalizeButton);
