@@ -87,6 +87,11 @@ $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
 $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
 $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 
+$("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+$("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+$("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+
 $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
 if (bio.skills.length > 0) {
